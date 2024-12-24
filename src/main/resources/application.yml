@@ -9,20 +9,21 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update  #테이블 생성
+      ddl-auto: update #테이블 생성
     properties:
-      .hibernate:
-        show_sql: true  #sql 쿼리 확인
-        format_sql: true # 가독성 좋게 포맷팅
+      hibernate:
+        show_sql: true # SQL 쿼리를 로그에 출력
+        format_sql: true # SQL 쿼리를 가독성 좋게 포맷
+        default_batch_fetch_size: 100
+    database-platform: org.hibernate.dialect.MySQL8Dialect #SQL 방언(dialect)을 설정하고, 각 데이터베이스에 최적화된 쿼리로 자동 변환
 
-    database-platform=org: org.hibernate.dialect.MySQLDialect
   servlet:
     multipart:
-      max-file-size: 20MB #파일 한 개당 최대 사이즈
-      max-request-size: 100MB #요청당 최대 파일 사이즈
+      max-file-size: 20MB # 파일 1개당 최대 크기
+      max-request-size: 100MB # 요청당 최대 파일 크기
 
-itemImgLocation: c:/shop/item
-uploadPath: file:///C:/shop/
+itemImgLocation: C:/shop/item # 상품 이미지 업로드 경로
+uploadPath: file:///C:/shop/ # 리소스 업로드 경로
 
 logging:
   level:
@@ -31,7 +32,3 @@ logging:
         type:
           descriptor:
             sql: trace
-
-
-
-

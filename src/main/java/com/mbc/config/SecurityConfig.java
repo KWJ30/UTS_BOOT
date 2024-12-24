@@ -30,7 +30,7 @@ public class SecurityConfig {
        http
                .formLogin(config->
                         config.loginPage("/members/login")
-                       .defaultSuccessUrl("/", true)
+                       .defaultSuccessUrl("/")
                        .usernameParameter("email")  //로그인화면에서 name=username이면 생락가능  --> name=email
                        .failureUrl("/members/login/error")
                )
